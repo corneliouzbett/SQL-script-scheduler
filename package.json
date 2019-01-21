@@ -1,0 +1,35 @@
+{
+  "name": "ampath-scheduler-runner",
+  "version": "1.0.0",
+  "description": "Ampath sql scripts scheduler runner is a node service that executes sql queries at a specify time in future. It automates the process of running sql scripts for future and periodically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "keywords": [
+    "node",
+    "cron",
+    "scheduler",
+    "runner",
+    "cluster",
+    "task"
+  ],
+  "author": "corneliouzbett",
+  "license": "MIT",
+  "dependencies": {
+    "cron": "^1.6.0",
+    "dotenv": "^6.2.0",
+    "hapi": "^17.8.1",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "nodemon": "^1.18.9"
+  }
+}
