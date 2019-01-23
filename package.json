@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node",
-    "start": "nodemon --exec babel-node server.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "keywords": [
     "node",
@@ -20,8 +20,11 @@
   "dependencies": {
     "cron": "^1.6.0",
     "dotenv": "^6.2.0",
+    "express": "^4.16.4",
     "hapi": "^17.8.1",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
+    "nodemailer": "^5.1.1",
     "sequelize": "^4.42.0",
     "sequelize-cli": "^5.4.0"
   },
