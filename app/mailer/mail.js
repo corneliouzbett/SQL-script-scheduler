@@ -12,19 +12,14 @@ let transporter = nodemailer.createTransport(
     }
 );
 export default class Mail {
-    constructor(from, to, subject, text) {
-        this.from = from;
-        this.to = to;
-        this.subject = subject;
-        this.text = text;
-    }
+    constructor() {}
 
-     sendEmail() {
+     sendEmail(from, to, subject, text) {
         let mailOptions = {
-            from: this.from,
-            to: this.to,
-            subject: this.subject,
-            text: this.text
+            from: from,
+            to: to,
+            subject: subject,
+            html: text
         }
     transporter.sendMail(mailOptions, (error, info) => {
         if (error){

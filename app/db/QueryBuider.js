@@ -23,7 +23,7 @@ export default class QueryBuilder {
 
     listPatients() {
         let query = 'insert into cohort (cohort_id, name, description, creator,'+ 
-            'date_created, voided, uuid) values (41,"male betw 23 and 34","oncology patients",1,"1996-01-02",1,"ZZZZZ-xxx-xxx");';
+            'date_created, voided, uuid) values (48,"male betw 23 and 34","oncology patients",1,"1996-01-02",1,"ZZZZZ-MMkl-xxx");';
 
         return connection.query(query);
 

@@ -27,6 +27,7 @@
     "mysql": "^2.16.0",
     "mysql2": "^1.6.4",
     "nodemailer": "^5.1.1",
+    "queue-fifo": "^0.2.5",
     "req-flash": "0.0.3"
   },
   "devDependencies": {
