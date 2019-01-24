@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       database_name: DataTypes.STRING,
       host: DataTypes.STRING,
       user: DataTypes.STRING,
-      password: DataTypes.STRING
+      password: DataTypes.STRING,
+      connection_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      }
     },
     {
       timestamps: false,

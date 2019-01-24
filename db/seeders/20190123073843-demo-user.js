@@ -11,6 +11,13 @@ module.exports = {
           host: 'localhost',
           user: 'root',
           password: 'password'
+        },
+        {
+          connection_name: 'Local-server',
+          database_name: 'openmrs',
+          host: 'localhost',
+          user: 'root',
+          password: 'password'
         }
       ],
       {}

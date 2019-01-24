@@ -1,6 +1,8 @@
 'use strict';
 
 import AppRoutes from './app/routes/routes'
+import BackgroundService from './app/services/BackgroundService'
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -21,6 +23,7 @@ app.use(express.static("public"));
 
 
 const routes  = new AppRoutes(app);
+const backgroud_service = new BackgroundService().start();
 
 if (cluster.isMaster) {
     console.log('Master ${proccess.pid} is running');
