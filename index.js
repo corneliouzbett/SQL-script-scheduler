@@ -1,6 +1,7 @@
 'use strict';
 
 import AppRoutes from './app/routes/routes';
+import Scheduler from './app/cronjobs/scheduler.cron';
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static('/public'));
 
 const routes = new AppRoutes(app);
+new Scheduler().everySecond().start();
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
