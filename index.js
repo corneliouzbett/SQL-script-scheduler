@@ -1,18 +1,18 @@
 'use strict';
 
-import AppRoutes from './app/routes/routes'
-import BackgroundService from './app/services/BackgroundService'
+import AppRoutes from './app/routes/routes';
+import DatabaseManager from './app/db/DatabaseManager';
+import ConnectionManager from './app/db/ConnectionManager';
 
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const PORT = process.env.PORT || 8005;
-const db = require("./db/models");
-
+const PORT = process.env.PORT || 8008;
 const cluster = require('cluster');
 const numOfCpus = require('os').cpus.length;
+const db_config = require('./config/database.json');
 
-var app = express();
+const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -22,8 +22,17 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 
-const routes  = new AppRoutes(app);
-const backgroud_service = new BackgroundService().start();
+const routes = new AppRoutes(app);
+const db_manager = new DatabaseManager();
+
+const conn = db_manager.createConnection();
+const db_connection = new ConnectionManager(conn);
+if (db_connection.isconnectionSuccesful()) {
+    global.db = db;
+}
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 if (cluster.isMaster) {
     console.log('Master ${proccess.pid} is running');
@@ -38,10 +47,7 @@ if (cluster.isMaster) {
 } else {
 
 }
-db.sequelize.sync({
-    force: false
-}).then(function () {
-    app.listen(PORT, function (req, res) {
-        console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-    });
+
+app.listen(PORT, function (req, res) {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
 });

@@ -1,6 +1,5 @@
 
 import Mail from '../mailer/mail'
-const db = require("../../db/models");
 
 
 const mail = new Mail(
@@ -17,14 +16,12 @@ export default class AppRoutes{
             mail.sendEmail();
         });
 
-        app.get('/api/connections', (req, res) => {
-            db.mysql_connection.findAll().then(
-                (data) => {
-                    res.json(data);
-                }
-            ).catch(
-                (error) =>{res.json(error)}
-            );
+        app.get('/', (req, res) => {
+         res.render('index.ejs',
+         {
+             title: 'Ampath | Reports',
+             result: null
+         });
         });
 
 

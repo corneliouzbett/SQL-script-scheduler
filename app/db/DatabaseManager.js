@@ -2,17 +2,17 @@
 
 const mysql = require('mysql');
 
-export default class DatabaseManager{
+export default class DatabaseManager {
 
-    constructor(){}
+    constructor() { }
 
-    createConnection(host, database_name, user, password){
+    createConnection() {
         const connection = mysql.createConnection(
             {
-                host: host,
-                database: database_name,
-                user: user,
-                password: password
+                host: 'localhost',
+                database: 'openmrs',
+                user: 'root',
+                password: 'password'
             }
         );
 
