@@ -12,32 +12,33 @@ export default class ConnectionManager {
                 console.log('Error connecting: ' + err.stack);
                 return false;
             } else {
-                console.log('connection success as id '+ this.connection.threadId);
+                console.log('connection success as id ' + this.connection.threadId);
                 return true;
             }
         });
     }
 
-    endConnection(){
-        this.connection.end( (err) => {
-            if (err){
-                console.log('Error occurred while ending connection');
-            }
+    query(sql, args) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(sql, args, (err, rows) => {
+                if (err)
+                    return reject(err);
+                resolve(rows);
+            });
         });
     }
 
-    executeSqlScripts(query_scripts){
-        this.connection.query(query_scripts, (error, res, fields) => {
-            if (error){
-                return error;
-            } else {
-                console.log('execution success '+res.rowAffected+' rows affected');
-                return res;
-            }
+    close() {
+        return new Promise((resolve, reject) => {
+            this.connection.end(err => {
+                if (err)
+                    return reject(err);
+                resolve();
+            });
         });
     }
 
-    pause(){
+    pause() {
         this.connection.pause();
     }
 
