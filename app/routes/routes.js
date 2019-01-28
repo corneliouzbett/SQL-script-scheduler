@@ -7,7 +7,7 @@ const queryBuilder = new QueryBuilder();
 const mail = new Mail();
 const from = 'kibett@ampath.or.ke';
 const to = 'kbett68@gmail.com';
-const icon_url = '';
+
 export default class AppRoutes {
     constructor(app) {
 

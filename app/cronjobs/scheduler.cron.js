@@ -13,6 +13,7 @@ export default class Scheduler {
             console.log('Job completed');
         }, false, 'Africa/Nairobi');
     }
+    
     daily() {
 
     }
