@@ -31,4 +31,10 @@ export default class QueryBuilder {
 
     }
 
+    createScriptsProcedure(){
+        let sql1 = ''
+        queue.enqueue(sql1);
+        queue.enqueue(sql2);
+    }
+
 }
