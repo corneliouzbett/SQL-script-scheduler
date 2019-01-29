@@ -5,6 +5,8 @@ import ConnectionManager from '../db/ConnectionManager';
 
 const db_connection = new DatabaseManager().createConnection();
 const connection = new ConnectionManager(db_connection);
+const Queue = require('queue-fifo');
+const queue = new Queue();
 
 
 export default class QueryBuilder {
